@@ -87,7 +87,7 @@ docker-compose exec app npx prisma migrate deploy
 
 ## 📚 Структура проекта
 
-\`\`\`
+```
 apakai/
 ├── app/                  # Основной код приложения
 │   ├── components/       # React компоненты
@@ -96,7 +96,7 @@ apakai/
 ├── prisma/              # Схема и миграции базы данных
 ├── public/              # Статические файлы
 └── docker/              # Docker конфигурация
-\`\`\`
+```
 
 ## 🔧 Конфигурация
 
