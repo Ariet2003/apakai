@@ -38,7 +38,7 @@
 
 1. Клонируйте репозиторий:
 \`\`\`bash
-git clone https://github.com/ваш-репозиторий/apakai.git
+git clone https://github.com/Ariet2003/apakai.git
 cd apakai
 \`\`\`
 
@@ -114,7 +114,7 @@ apakai/
 
 ## 👥 Авторы
 
-- Разработчик - [Ваше имя](https://github.com/ваш-профиль)
+- Разработчик - [Ariet](https://github.com/Ariet2003)
 
 ## 📄 Лицензия
 
