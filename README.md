@@ -37,53 +37,53 @@
 ### Локальная разработка
 
 1. Клонируйте репозиторий:
-\`\`\`bash
+```bash
 git clone https://github.com/Ariet2003/apakai.git
 cd apakai
-\`\`\`
+```
 
 2. Установите зависимости:
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 3. Скопируйте файл с переменными окружения:
-\`\`\`bash
+```bash
 cp .env.example .env
-\`\`\`
+```
 
 4. Настройте переменные окружения в файле .env
 
 5. Запустите миграции базы данных:
-\`\`\`bash
+```bash
 npx prisma migrate dev
-\`\`\`
+```
 
 6. Запустите проект:
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 ### 🐳 Запуск через Docker
 
 1. Убедитесь, что у вас установлены Docker и Docker Compose
 
 2. Скопируйте файл с переменными окружения:
-\`\`\`bash
+```bash
 cp .env.example .env
-\`\`\`
+```
 
 3. Настройте переменные окружения в файле .env
 
 4. Запустите контейнеры:
-\`\`\`bash
+```bash
 docker-compose up -d
-\`\`\`
+```
 
 5. Примените миграции:
-\`\`\`bash
+```bash
 docker-compose exec app npx prisma migrate deploy
-\`\`\`
+```
 
 ## 📚 Структура проекта
 
