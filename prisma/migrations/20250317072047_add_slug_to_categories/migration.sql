@@ -16,3 +16,9 @@ ALTER TABLE "Category" ALTER COLUMN "slug" SET NOT NULL;
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Category_slug_key" ON "Category"("slug");
+-- Make slug required
+ALTER TABLE "Category" ALTER COLUMN "slug" SET NOT NULL;
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Category_slug_key" ON "Category"("slug");
+

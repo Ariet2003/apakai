@@ -126,8 +126,7 @@ export async function POST(request: NextRequest) {
         if (file instanceof File && file.size > 0) {
           try {
             // Сохраняем файл и получаем URL
-            const bytes = await file.arrayBuffer();
-            const imageUrl = await saveUploadedFile(file, bytes);
+            const imageUrl = await saveUploadedFile(file, name);
             
             // Создаем запись об изображении в базе данных
             await prisma.image.create({

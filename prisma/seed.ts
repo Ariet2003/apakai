@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import slugify from 'slugify';
 
 const prisma = new PrismaClient();
 
@@ -13,7 +12,6 @@ async function main() {
   const smartphones = await prisma.category.create({
     data: {
       name: 'Смартфоны',
-      slug: 'smartphones',
       description: 'Современные мобильные устройства'
     }
   });
@@ -21,7 +19,6 @@ async function main() {
   const laptops = await prisma.category.create({
     data: {
       name: 'Ноутбуки',
-      slug: 'laptops',
       description: 'Портативные компьютеры для работы и развлечений'
     }
   });
@@ -29,7 +26,6 @@ async function main() {
   const tablets = await prisma.category.create({
     data: {
       name: 'Планшеты',
-      slug: 'tablets',
       description: 'Универсальные устройства для работы и развлечений'
     }
   });
@@ -41,7 +37,6 @@ async function main() {
       const product = await prisma.product.create({
         data: {
           name: `${category.name} ${i}`,
-          slug: slugify(`${category.name}-${i}`, { lower: true }),
           description: `Описание для ${category.name.toLowerCase()} ${i}`,
           price: Math.floor(Math.random() * 50000) + 30000,
           categoryId: category.id,
@@ -62,6 +57,7 @@ async function main() {
   await createProducts(smartphones, 5);
   await createProducts(laptops, 5);
   await createProducts(tablets, 5);
+
 }
 
 main()

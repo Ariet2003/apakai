@@ -9,16 +9,10 @@ import SortSelect from '@/app/components/SortSelect';
 import Filters from '@/app/components/Filters';
 import { useProducts } from '@/app/hooks/useProducts';
 import { useLanguageContext } from '@/app/contexts/LanguageContext';
-import { TranslationKey } from '@/app/types/translations';
 import Cookies from 'js-cookie';
 
 // Компонент для просмотра галереи изображений товара
-function ProductGallery({ images, name, price, t }: { 
-  images: any[], 
-  name: string, 
-  price: number, 
-  t: (key: TranslationKey) => string 
-}) {
+function ProductGallery({ images, name, price, t }: { images: any[], name: string, price: number, t: (key: string) => string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const nextImage = (e: React.MouseEvent) => {
