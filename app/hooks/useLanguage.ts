@@ -3,9 +3,7 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { translations } from '../i18n/translations';
-
-type Language = 'ru' | 'ky';
-type TranslationKey = keyof typeof translations.ru;
+import { Language, TranslationKey } from '../types';
 
 const LANGUAGE_COOKIE_NAME = 'preferred_language';
 
@@ -25,7 +23,7 @@ export const useLanguage = (initialLanguage: Language = 'ru') => {
     const newLanguage = language === 'ru' ? 'ky' : 'ru';
     setLanguage(newLanguage);
     if (isClient) {
-      Cookies.set(LANGUAGE_COOKIE_NAME, newLanguage, { expires: 365 }); // Сохраняем на год
+      Cookies.set(LANGUAGE_COOKIE_NAME, newLanguage, { expires: 365 });
     }
   };
 

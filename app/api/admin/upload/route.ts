@@ -21,7 +21,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const imageUrl = await saveUploadedFile(file, name);
+    const bytes = await file.arrayBuffer();
+    const imageUrl = await saveUploadedFile(file, bytes);
     
     return NextResponse.json({ imageUrl });
   } catch (error) {

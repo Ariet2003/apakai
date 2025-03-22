@@ -1,8 +1,14 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import LoginForm from '@/app/components/LoginForm';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-  return <LoginForm />;
+  const router = useRouter();
+
+  const handleLoginSuccess = () => {
+    router.push('/admin/dashboard');
+  };
+
+  return <LoginForm onSuccess={handleLoginSuccess} />;
 } 

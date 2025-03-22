@@ -121,7 +121,8 @@ export async function PUT(
       for (const file of imageFiles) {
         if (file instanceof File && file.size > 0) {
           try {
-            const imageUrl = await saveUploadedFile(file, name);
+            const bytes = await file.arrayBuffer();
+            const imageUrl = await saveUploadedFile(file, bytes);
             await prisma.image.create({
               data: {
                 url: imageUrl,

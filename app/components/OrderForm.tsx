@@ -39,7 +39,7 @@ export default function OrderForm({ cartItems, totalSum, onClose }: OrderFormPro
         },
         body: JSON.stringify({
           ...orderData,
-          language // Добавляем язык интерфейса
+          language
         }),
       });
 
@@ -62,19 +62,13 @@ export default function OrderForm({ cartItems, totalSum, onClose }: OrderFormPro
     setError('');
 
     try {
-      // Подготавливаем данные о товарах
-      const items = cartItems.map(item => {
-        return {
-          name: item.product.name,
-          quantity: item.quantity,
-          price: item.product.price,
-          id: item.product.id
-        };
-      });
+      const items = cartItems.map(item => ({
+        name: item.product.name,
+        quantity: item.quantity,
+        price: item.product.price,
+        id: item.product.id
+      }));
 
-
-
-      // Отправляем заказ
       await sendToTelegram({
         name: formData.name.trim(),
         phone: formData.phone.trim(),
@@ -83,12 +77,10 @@ export default function OrderForm({ cartItems, totalSum, onClose }: OrderFormPro
         totalSum
       });
 
-      // Очищаем корзину
       Cookies.remove('cart');
       localStorage.removeItem('cartPrices');
       localStorage.removeItem('productDetails');
 
-      // Вызываем событие обновления корзины
       window.dispatchEvent(new CustomEvent('cartUpdate', {
         detail: {
           cartData: {},
@@ -96,7 +88,6 @@ export default function OrderForm({ cartItems, totalSum, onClose }: OrderFormPro
       }));
 
       onClose();
-      // Перенаправляем на страницу корзины и перезагружаем её
       router.push('/cart');
       window.location.reload();
     } catch (err) {
@@ -114,10 +105,8 @@ export default function OrderForm({ cartItems, totalSum, onClose }: OrderFormPro
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      {/* Затемнение фона */}
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose}></div>
 
-      {/* Модальное окно */}
       <div className="relative min-h-screen flex items-center justify-center p-4">
         <div className="relative w-full max-w-md bg-white rounded-2xl shadow-xl">
           <div className="p-6">
@@ -126,7 +115,7 @@ export default function OrderForm({ cartItems, totalSum, onClose }: OrderFormPro
               <button
                 onClick={onClose}
                 className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-                aria-label={t('close')}
+                aria-label={t('closeModal')}
               >
                 <XMarkIcon className="h-6 w-6" />
               </button>

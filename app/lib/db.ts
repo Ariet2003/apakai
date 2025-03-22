@@ -120,7 +120,7 @@ export async function getProducts(
 
 export async function getCategoryById(id: string) {
   return prisma.category.findUnique({
-    where: { id: parseInt(id) },
+    where: { id },
     include: {
       products: {
         select: {
@@ -133,7 +133,7 @@ export async function getCategoryById(id: string) {
 
 export async function getProductById(id: string) {
   return prisma.product.findUnique({
-    where: { id: parseInt(id) },
+    where: { id },
     include: {
       category: true,
       images: true
